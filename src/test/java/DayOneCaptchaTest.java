@@ -26,4 +26,25 @@ class DayOneCaptchaTest {
         assertEquals(1089, dayOneCaptcha.captchaSum(input));
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "1212, 6",
+            "1221, 0",
+            "123425, 4",
+            "123123, 12",
+            "12131415, 4"
+    })
+    void captchaHalfwaySumTest(String input, int expected) {
+        DayOneCaptcha dayOneCaptcha = new DayOneCaptcha();
+        assertEquals(expected, dayOneCaptcha.captchaHalfwaySum(input));
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources="/day1-2.txt")
+    void captchaFileHalfWayTest(String input) {
+        DayOneCaptcha dayOneCaptcha = new DayOneCaptcha();
+        assertEquals(1156, dayOneCaptcha.captchaHalfwaySum(input));
+    }
+
+
 }

@@ -11,4 +11,17 @@ public class DayOneCaptcha {
         }
         return sum;
     }
+
+    int captchaHalfwaySum(String input){
+        int sum = 0;
+        for (int i = 0; i < input.length()/2; i++) {
+            char next = input.charAt(i + input.length()/2);
+            char current = input.charAt(i);
+            if (current == next) {
+                sum += Character.getNumericValue(current);
+            }
+        }
+        sum = sum * 2;
+        return sum;
+    }
 }
