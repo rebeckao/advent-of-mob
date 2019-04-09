@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'se.knowit.adventofmob'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile('io.cucumber:cucumber-java:2.1.0')
+    implementation('org.projectlombok:lombok:1.18.4')
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.2.0')
+    testImplementation('org.junit.jupiter:junit-jupiter-params:5.2.0')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.2.0')
+}
