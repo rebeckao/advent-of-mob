@@ -39,4 +39,15 @@ class DayTwoChecksumTest {
         DayTwoChecksum dayTwoChecksum = new DayTwoChecksum();
         assertEquals(51139, dayTwoChecksum.calculateCheckSum(rows));
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "5 9 2 8, 4",
+            "9 4 7 3, 3",
+            "3 8 6 5, 2"
+    })
+    void calculateFactorChecksum(String row, int expectedFactor) {
+        DayTwoChecksum dayTwoChecksum = new DayTwoChecksum();
+        assertEquals(expectedFactor, dayTwoChecksum.calculateFactorChecksum(row));
+    }
 }
