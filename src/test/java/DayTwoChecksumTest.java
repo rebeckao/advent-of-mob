@@ -18,8 +18,8 @@ class DayTwoChecksumTest {
             "7 5 3, 4",
             "2 4 6 8, 6"
     })
-    void calculateRowChecksum(String row, int expected) {
-        assertEquals(expected, new DayTwoChecksum().calculateRowChecksum(row));
+    void calculateRowDiffChecksum(String row, int expected) {
+        assertEquals(expected, new DayTwoChecksum().calculateRowDiffChecksum(row));
     }
 
     @ParameterizedTest
@@ -28,16 +28,16 @@ class DayTwoChecksumTest {
             "7 5 3#" +
             "2 4 6 8, 18"
     })
-    void calculateChecksum(String rows, int expected) {
+    void calculateDiffChecksum(String rows, int expected) {
         List<String> input = List.of(rows.split("#"));
-        assertEquals(expected, new DayTwoChecksum().calculateCheckSum(input));
+        assertEquals(expected, new DayTwoChecksum().calculateDiffChecksum(input));
     }
 
     @Test
-    void checksumTest() throws IOException {
+    void diffChecksumTest() throws IOException {
         List<String> rows = Files.lines(Paths.get("./src/test/resources/day2-1.txt")).collect(toList());
         DayTwoChecksum dayTwoChecksum = new DayTwoChecksum();
-        assertEquals(51139, dayTwoChecksum.calculateCheckSum(rows));
+        assertEquals(51139, dayTwoChecksum.calculateDiffChecksum(rows));
     }
 
     @ParameterizedTest
