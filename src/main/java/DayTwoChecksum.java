@@ -15,7 +15,7 @@ public class DayTwoChecksum {
         return max - min;
     }
 
-    public int calculateFactorChecksum(String row) {
+    public int calculateFactorRowChecksum(String row) {
         String[] numbers = row.split("\\W");
         List<Integer> integers = Stream.of(numbers).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
 
@@ -32,5 +32,9 @@ public class DayTwoChecksum {
             }
         }
         return 0;
+    }
+
+    public int calculateFactorCheckSum(List<String> rows) {
+        return rows.stream().mapToInt(this::calculateFactorRowChecksum).sum();
     }
 }

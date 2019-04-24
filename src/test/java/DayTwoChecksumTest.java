@@ -46,8 +46,28 @@ class DayTwoChecksumTest {
             "9 4 7 3, 3",
             "3 8 6 5, 2"
     })
-    void calculateFactorChecksum(String row, int expectedFactor) {
+    void calculateFactorRowChecksum(String row, int expectedFactor) {
         DayTwoChecksum dayTwoChecksum = new DayTwoChecksum();
-        assertEquals(expectedFactor, dayTwoChecksum.calculateFactorChecksum(row));
+        assertEquals(expectedFactor, dayTwoChecksum.calculateFactorRowChecksum(row));
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "5 9 2 8#" +
+                    "9 4 7 3#" +
+                    "3 8 6 5, 9"
+    })
+    void calculateFactorChecksum(String rows, int expected) {
+        List<String> input = List.of(rows.split("#"));
+        assertEquals(expected, new DayTwoChecksum().calculateFactorCheckSum(input));
+    }
+
+    @Test
+    void factorChecksumTest() throws IOException {
+        List<String> rows = Files.lines(Paths.get("./src/test/resources/day2-2.txt")).collect(toList());
+        DayTwoChecksum dayTwoChecksum = new DayTwoChecksum();
+        assertEquals(272, dayTwoChecksum.calculateFactorCheckSum(rows));
+    }
+
 }
+
