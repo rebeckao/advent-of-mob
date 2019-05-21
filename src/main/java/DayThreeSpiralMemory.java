@@ -1,9 +1,17 @@
 public class DayThreeSpiralMemory {
+    int lastCornerInLayer(int layer) {
+        return (int) Math.pow(layer * 2 + 1, 2);
+    }
+
     public int calculateDistanceToCenter(int value) {
         int layer = findLayer(value);
-        int rowLength =
-        int previousCorner = Math.pow(layer *2, 2);
-        return 0;
+        int lastCornerInPreviousLayer = lastCornerInLayer(layer - 1);
+        int lastCornerInLayer = lastCornerInLayer(layer);
+        int distanceInLayer = value - lastCornerInPreviousLayer;
+        int layerLength = lastCornerInLayer - lastCornerInPreviousLayer;
+        int distanceFromPreviousCorner = layerLength == 0? 0 : distanceInLayer % (layerLength/4);
+        int offsetFromMiddle = Math.abs(distanceFromPreviousCorner - layer);
+        return offsetFromMiddle + layer;
     }
 
     public int findLayer(int value) {
