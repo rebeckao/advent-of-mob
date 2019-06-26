@@ -31,6 +31,12 @@ class DayThreeSpiralMemoryTest {
     }
 
     @ParameterizedTest
+    @CsvSource({"9, 10", "700, 747", "122, 133", "361527, 363010"})
+    void findFirstSpiralFibonacciValueOver(int value, int expected) {
+        assertEquals(expected, new DayThreeSpiralMemory().findFirstSpiralFibonacciValueOver(value));
+    }
+
+    @ParameterizedTest
     @CsvSource({"0,0, 1,0, 1,-1", "1,0, 1,-1, 0,-1", "1,-1, 0,-1, -1,-1", "0,-1, -1,-1, -1,0", "-1,-1, -1,0, -1,1",
             "-1,0, -1,1, 0,1", "-1,1, 0,1, 1,1", "0,1, 1,1, 2,1"})
     void getNextPosition(int prevX, int prevY, int curX, int curY, int nextX, int nextY) {

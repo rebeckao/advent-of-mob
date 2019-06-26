@@ -70,12 +70,14 @@ public class DayThreeSpiralMemory {
         return sumOfAll;
     }
 
-    /*private void sumOfAdjacent(Position current, Map<Position, Integer> map) {
-        IntStream.range(current.x - 1, current.x + 2)
-                .mapToObj(x -> IntStream.range(current.y - 1, current.y + 2)
-                        .mapToObj(y -> Position.builder().x(x).y(y).build()))
-                .flatMap(Function.identity())
-                .mapToInt(p -> map.getOrDefault(p, 0))
-                .sum();
-    }*/
+    int findFirstSpiralFibonacciValueOver(int value) {
+        int counter = 0;
+        int fibonacciValue = 0;
+        while (fibonacciValue <= value) {
+            counter++;
+            fibonacciValue = calculateSpiralFibonacciValueAfterSteps(counter);
+        }
+        return fibonacciValue;
+    }
+
 }
