@@ -46,7 +46,7 @@ public class DayThreeSpiralMemory {
                 .build();
     }
 
-    int calculateSpiralFibonacci(int pos) {
+    int calculateSpiralFibonacciValueAfterSteps(int steps) {
         Position prev = Position.builder().x(1).y(0).build();
         Position current = Position.builder().x(1).y(-1).build();
         Map<Position, Integer> map = new HashMap<>();
@@ -54,7 +54,7 @@ public class DayThreeSpiralMemory {
         map.put(Position.builder().x(1).y(0).build(), 1);
 
         int sumOfAll = 1;
-        for (int i = 2; i <= pos; i++) {
+        for (int i = 2; i <= steps; i++) {
             sumOfAll = 0;
             for (int x = current.x - 1; x <= current.x + 1; x++) {
                 for (int y = current.y - 1; y <= current.y + 1; y++) {

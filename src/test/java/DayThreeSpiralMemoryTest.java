@@ -24,15 +24,15 @@ class DayThreeSpiralMemoryTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"1, 1", "2, 1", "3, 2", "4, 4", "5, 5", "6, 10", "7, 11", "8, 23", "9, 25",
-            "10, 26", "11, 54", "12, 57", "13, 59", "14, 122", "15, 133", "16, 142", "17, 147", "18, 304", "19, 330"})
-    void spiralFibonacci(int pos, int value) {
-        assertEquals(value, new DayThreeSpiralMemory().calculateSpiralFibonacci(pos));
+    @CsvSource({"0, 1", "1, 1", "2, 2", "3, 4", "4, 5", "5, 10", "6, 11", "7, 23", "8, 25",
+            "9, 26", "10, 54", "11, 57", "12, 59", "13, 122", "14, 133", "15, 142", "16, 147", "17, 304", "18, 330"})
+    void spiralFibonacci(int steps, int value) {
+        assertEquals(value, new DayThreeSpiralMemory().calculateSpiralFibonacciValueAfterSteps(steps));
     }
 
     @ParameterizedTest
     @CsvSource({"0,0, 1,0, 1,-1", "1,0, 1,-1, 0,-1", "1,-1, 0,-1, -1,-1", "0,-1, -1,-1, -1,0", "-1,-1, -1,0, -1,1",
-    "-1,0, -1,1, 0,1", "-1,1, 0,1, 1,1", "0,1, 1,1, 2,1"})
+            "-1,0, -1,1, 0,1", "-1,1, 0,1, 1,1", "0,1, 1,1, 2,1"})
     void getNextPosition(int prevX, int prevY, int curX, int curY, int nextX, int nextY) {
         Position previous = Position.builder().x(prevX).y(prevY).build();
         Position current = Position.builder().x(curX).y(curY).build();
