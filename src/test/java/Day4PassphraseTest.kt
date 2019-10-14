@@ -22,4 +22,20 @@ internal class Day4PassphraseTest {
         assertEquals(455L, Day4Passphrase().numberOfPassphrasesWithUniqueWords(rows))
     }
 
+    @ParameterizedTest
+    @CsvSource("abcde fghij, true",
+            "abcde xyz ecdab, false",
+            "a ab abc abd abf abj, true",
+            "iiii oiii ooii oooi oooo, true",
+            "oiii ioii iioi iiio, false")
+    fun passphraseContainsNoDuplicateAnagrams(passphrase: String, expected: Boolean) {
+        assertEquals(expected, Day4Passphrase().passphraseContainsNoDuplicateAnagrams(passphrase))
+    }
+
+    @Test
+    fun numberOfPassphrasesWithNoDuplicateAnagrams() {
+        val rows = Files.lines(Paths.get("./src/test/resources/day4-1.txt")).toList()
+        assertEquals(186L, Day4Passphrase().numberOfPassphrasesContainsNoAnagrams(rows))
+    }
+
 }
