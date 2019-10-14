@@ -12,14 +12,14 @@ internal class Day4PassphraseTest {
     @CsvSource("aa bb cc dd ee, true",
             "aa bb cc dd aa, false",
             "aa bb cc dd aaa, true")
-    fun passphraseIsValid(passphrase: String, expected: Boolean) {
-        assertEquals(expected, Day4Passphrase().passphraseIsValid(passphrase))
+    fun passphraseContainsUniqueWords(passphrase: String, expected: Boolean) {
+        assertEquals(expected, Day4Passphrase().passphraseContainsUniqueWords(passphrase))
     }
 
     @Test
-    fun numberOfValidPassphrases() {
+    fun numberOfPassphrasesWithUniqueWords() {
         val rows = Files.lines(Paths.get("./src/test/resources/day4-1.txt")).toList()
-        assertEquals(455L, Day4Passphrase().numberOfValidPassphrases(rows))
+        assertEquals(455L, Day4Passphrase().numberOfPassphrasesWithUniqueWords(rows))
     }
 
 }
