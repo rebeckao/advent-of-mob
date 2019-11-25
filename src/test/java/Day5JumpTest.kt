@@ -19,4 +19,17 @@ internal class Day5JumpTest {
         Assertions.assertEquals(360603, Day5Jump().numberOfJumpsToEscape(sequence))
     }
 
+    @Test
+    fun numberOfPartTwoJumpsToEscape() {
+        val startSequence = intArrayOf(0, 3, 0, 1, -3)
+        Assertions.assertEquals(10, Day5Jump().numberOfPartTwoJumpsToEscape(startSequence))
+    }
+
+    @Test
+    fun numberOfPartTwoJumpsToEscapeForFile() {
+        val sequence: IntArray = Files.lines(Paths.get("./src/test/resources/day5-1.txt")).mapToInt { it.toInt() }.toArray()
+        Assertions.assertEquals(25347697, Day5Jump().numberOfPartTwoJumpsToEscape(sequence))
+    }
+
+
 }
