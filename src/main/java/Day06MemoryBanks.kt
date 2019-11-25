@@ -1,10 +1,10 @@
 class Day06MemoryBanks {
-    fun iterationsBeforeRepeat (startSequence: IntArray): Int {
-        val oldIterations: HashSet<String> = HashSet()
+    fun iterationsBeforeRepeat (startSequence: IntArray): Pair<Int, Int> {
+        val oldIterations: HashMap<String, Int> = HashMap()
         var iterationsCounter = 0
         val sequence = startSequence.clone()
-        while ( !oldIterations.contains(sequence.joinToString( " " ))) {
-            oldIterations.add(sequence.joinToString(" "))
+        while ( !oldIterations.contains(sequence.stringify())) {
+            oldIterations[sequence.stringify()] = iterationsCounter
             val indexOfBankWithMostBlocks = resolveIndexOfBankWithMostBlocks(sequence)
             var numberOfBlocksToDistribute = sequence[indexOfBankWithMostBlocks]
             sequence[indexOfBankWithMostBlocks] = 0
@@ -17,7 +17,9 @@ class Day06MemoryBanks {
             iterationsCounter++
         }
 
-        return iterationsCounter
+
+        val oldIterationCount = oldIterations[sequence.stringify()]
+        return Pair(iterationsCounter, iterationsCounter - oldIterationCount!!)
     }
 
     private fun resolveIndexOfBankWithMostBlocks(sequence: IntArray): Int {
@@ -31,5 +33,9 @@ class Day06MemoryBanks {
             }
         }
         return indexOfBankWithMostBlocks
+    }
+
+    private fun IntArray.stringify(): String {
+        return this.joinToString(" ")
     }
 }
