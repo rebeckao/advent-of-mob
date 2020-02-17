@@ -1,12 +1,21 @@
-import java.lang.IllegalStateException
-
 class Day08UnusualInstructions {
     val register: MutableMap<String, Int> = hashMapOf()
-    fun largestRegisterValue(instructions: List<String>) : Int {
+    var highestValue : Int = 0
+    fun largestRegisterValueAtEnd(instructions: List<String>) : Int {
         instructions.forEach{
             executeInstruction(it)
         }
         return register.values.max()!!
+    }
+
+    fun largestRegisterValueAtEvah(instructions: List<String>) : Int {
+        instructions.forEach{
+            executeInstruction(it)
+            if (register.values.max()!! > highestValue) {
+                highestValue = register.values.max()!!
+            }
+        }
+        return highestValue
     }
 
     private fun executeInstruction(instruction: String) {

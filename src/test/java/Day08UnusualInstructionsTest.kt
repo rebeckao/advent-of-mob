@@ -13,12 +13,30 @@ internal class Day08UnusualInstructionsTest {
                 "c dec -10 if a >= 1",
                 "c inc -20 if c == 10"
         )
-        Assertions.assertEquals(1, Day08UnusualInstructions().largestRegisterValue(instructions))
+        Assertions.assertEquals(1, Day08UnusualInstructions().largestRegisterValueAtEnd(instructions))
     }
 
     @Test
     fun largestRegisterValueSampleData() {
         val instructions: List<String> = Files.lines(Paths.get("./src/test/resources/day8.txt")).toList()
-        Assertions.assertEquals(1, Day08UnusualInstructions().largestRegisterValue(instructions))
+        Assertions.assertEquals(3880, Day08UnusualInstructions().largestRegisterValueAtEnd(instructions))
     }
+
+    @Test
+    fun highestValueInRegister() {
+        val instructions: List<String> = listOf(
+                "b inc 5 if a > 1",
+                "a inc 1 if b < 5",
+                "c dec -10 if a >= 1",
+                "c inc -20 if c == 10"
+        )
+        Assertions.assertEquals(10, Day08UnusualInstructions().largestRegisterValueAtEvah(instructions))
+    }
+
+    @Test
+    fun largestRegisterValueRealData() {
+        val instructions: List<String> = Files.lines(Paths.get("./src/test/resources/day8.txt")).toList()
+        Assertions.assertEquals(5035, Day08UnusualInstructions().largestRegisterValueAtEvah(instructions))
+    }
+
 }
