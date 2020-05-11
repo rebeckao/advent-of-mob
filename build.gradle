@@ -6,7 +6,7 @@ plugins {
 group 'se.knowit.adventofmob'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.12
+sourceCompatibility = 1.13
 
 repositories {
     mavenCentral()
