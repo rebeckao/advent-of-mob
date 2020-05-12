@@ -1,4 +1,5 @@
 class DayOneCaptcha {
+    
     fun captchaSum(input: String): Int {
         var workingString = input
         var sum = 0
