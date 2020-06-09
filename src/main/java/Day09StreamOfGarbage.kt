@@ -1,5 +1,7 @@
 class Day09StreamOfGarbage(var index: Int, val characterStream: String) {
 
+    var garbageCount = 0
+
     fun sumOfGroupScores(): Int {
         val rootGroup = parseCharacterStream()
         return rootGroup.sumOfScores(0)
@@ -38,12 +40,13 @@ class Day09StreamOfGarbage(var index: Int, val characterStream: String) {
         index++
     }
 
-    private fun parseGarbage() {
+    fun parseGarbage() {
         while (characterStream[index] != '>') {
             if (characterStream[index] == '!') {
                 index += 2
             } else {
                 index++
+                garbageCount++
             }
         }
         index++

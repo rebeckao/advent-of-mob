@@ -16,7 +16,14 @@ internal class Day09StreamOfGarbageTest {
         "{<a>,<a>,<a>,<a>}; 1",
         "{{<ab>},{<ab>},{<ab>},{<ab>}}; 9",
         "{{<!!>},{<!!>},{<!!>},{<!!>}}; 9",
-        "{{<a!>},{<a!>},{<a!>},{<ab>}}; 3"
+        "{{<a!>},{<a!>},{<a!>},{<ab>}}; 3",
+        "{<>}; 1",
+        "{<random characters>}; 1",
+        "{<<<<>}; 1",
+        "{<{!>}>}; 1",
+        "{<!!>}; 1",
+        "{<!!!>>}; 1",
+        "{<{o\"i!a,<{i<a>}; 1"
     ],
             delimiter = ';'
     )
@@ -30,4 +37,29 @@ internal class Day09StreamOfGarbageTest {
         assertEquals(20530, Day09StreamOfGarbage(0, chars).sumOfGroupScores())
     }
 
+    @ParameterizedTest
+    @CsvSource(value = [
+        "<>; 0",
+        "<random characters>; 17",
+        "<<<<>; 3",
+        "<{!>}>; 2",
+        "<!!>; 0",
+        "<!!!>>; 0",
+        "<{o\"i!a,<{i<a>; 10"
+    ],
+            delimiter = ';'
+    )
+    fun sumOfGarbage(stream: String, expected: Int) {
+        val day09StreamOfGarbage = Day09StreamOfGarbage(1, stream)
+        day09StreamOfGarbage.parseGarbage()
+        assertEquals(expected, day09StreamOfGarbage.garbageCount)
+    }
+
+    @Test
+    fun sumOfGarbageReal() {
+        val chars = Files.lines(Paths.get("./src/test/resources/day9.txt")).findFirst().orElse("0")
+        val day09StreamOfGarbage = Day09StreamOfGarbage(0, chars)
+        day09StreamOfGarbage.parseCharacterStream()
+        assertEquals(9978, day09StreamOfGarbage.garbageCount)
+    }
 }
