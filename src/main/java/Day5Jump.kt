@@ -1,8 +1,8 @@
 class Day5Jump {
 
-    fun numberOfJumpsToEscape (sequence: IntArray ):Int {
+    fun numberOfJumpsToEscape(sequence: IntArray): Int {
         var currentIndex = 0
-        var numberOfJumps =  0
+        var numberOfJumps = 0
         while (currentIndex >= 0 && currentIndex < sequence.size) {
             numberOfJumps++
 
@@ -17,7 +17,7 @@ class Day5Jump {
 
     fun numberOfPartTwoJumpsToEscape(sequence: IntArray): Int {
         var currentIndex = 0
-        var numberOfJumps =  0
+        var numberOfJumps = 0
         while (currentIndex >= 0 && currentIndex < sequence.size) {
             numberOfJumps++
 
