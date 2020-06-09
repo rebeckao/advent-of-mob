@@ -35,6 +35,7 @@ class Day09StreamOfGarbage(var index: Int, val characterStream: String) {
             }
             nextCharacter = characterStream[index]
         }
+        index++
     }
 
     private fun parseGarbage() {
