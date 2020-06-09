@@ -21,11 +21,9 @@ class Day09StreamOfGarbage(var index: Int, val characterStream: String) {
         while (nextCharacter != '}') {
             if (nextCharacter == '!') {
                 index += 2
-                nextCharacter = characterStream[index]
             } else if (nextCharacter == '<') {
                 index++
                 parseGarbage()
-                nextCharacter = characterStream[index]
             } else if (nextCharacter == '{') {
                 index++
                 val subGroups: MutableList<CharacterGroup> = arrayListOf()
@@ -35,6 +33,7 @@ class Day09StreamOfGarbage(var index: Int, val characterStream: String) {
             } else {
                 index++
             }
+            nextCharacter = characterStream[index]
         }
     }
 
@@ -58,7 +57,7 @@ class CharacterGroup(val subGroups: List<CharacterGroup>) {
             return ourScore
         }
         return subGroups.stream()
-                .mapToInt{it.sumOfScores(ourScore)}
+                .mapToInt { it.sumOfScores(ourScore) }
                 .sum() + ourScore
     }
 }

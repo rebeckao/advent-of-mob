@@ -5,8 +5,9 @@ import org.junit.jupiter.params.provider.CsvSource
 internal class Day09StreamOfGarbageTest {
 
     @ParameterizedTest
-    @CsvSource(value = ["{}; 1"
-//                    "{{{}}}; 6",
+    @CsvSource(value = [
+        "{}; 1",
+        "{{{}}}; 6",
 //                    "{{},{}}; 5",
 //                    "{{{},{},{{}}}}; 16",
 //                    "{<a>,<a>,<a>,<a>}; 1",
@@ -16,7 +17,7 @@ internal class Day09StreamOfGarbageTest {
     ],
             delimiter = ';'
     )
-    fun sumOfGroupScores(stream : String, expected : Int) {
+    fun sumOfGroupScores(stream: String, expected: Int) {
         assertEquals(expected, Day09StreamOfGarbage(0, stream).sumOfGroupScores())
     }
 }
