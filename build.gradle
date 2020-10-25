@@ -23,6 +23,11 @@ dependencies {
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.2.0')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
+
+test {
+    useJUnitPlatform()
+}
+
 compileKotlin {
     kotlinOptions {
         jvmTarget = "12"
